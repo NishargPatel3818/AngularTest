@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Northwest Mutual Insurances</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="js/router.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-controller="mainCtrl" style="background-color:#eeeeee">
+
+    <header class="container"><h1 style="text-align: center"><b>Search Page</b></h1></header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form style="text-align: center" ng-submit="submit()" novalidate>
+                    <input type="text" ng-model="name1" class="input_text" placeholder="Please input 'Company Name'" required highlight-on-error />&nbsp;
+                    <button type="submit" class="btn btn-primary" ng-click="search()">Search</button><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-1 col-sm-4 col-lg-4" id="s"></div>
+            <div class="col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                <div ng-repeat="data in listOfCustomers |filter:{CompanyName:name1} | orderBy:'CompanyName'"  class="result_box main_div"  ng-hide="name1 == ''">
+                    <table class="table table-striped" style="margin-bottom:-5%;margin-left: -15%">
+                        <tr>
+                            <td style="border-right:1px solid;width:50%"><b>Company:</b></td>
+                            <span style="margin-left: 5%;width:50%"><td class="right_info"><b>{{data.CompanyName}}</b></td></span>    
+                        </tr>
+                        <tr>
+                            <td style="border-right:1px solid;width:50%">City:</td>
+                            <td class="right_info" style="width:50%">{{data.City}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-0 col-sm-3"></div>
+            <div class="col-xs-12 col-sm-7">
+               <footer><h5 style="margin-left: -10%">Copyright © Northwest Mutual Insurances </h5></footer> 
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
